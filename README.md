@@ -1,103 +1,148 @@
-Virtual Assistant
+# Virtual Assistant
 
-A lightweight, boot-time voice-activated virtual assistant built with Python and integrated with a Rainmeter voice visualization skin. The assistant listens for a predefined wake phrase, launches authorized applications, and then terminates itself along with Rainmeter to maintain optimal system performance.
+A voice-activated automation tool that launches your applications automatically when you say a wake phrase. This lightweight assistant runs in the background with a Rainmeter skin visualization and exits after completing its task to free up system resources.
 
-Overview
+## Features
 
-This project is designed to run automatically when the system starts. It continuously listens for a user-defined wake phrase through the microphone. Once the wake phrase is detected, the assistant launches specific applications using predefined file paths and then cleanly shuts down all related background processes.
+- 🎤 **Voice Recognition**: Listens continuously for custom wake phrases using Google's speech recognition API
+- 🚀 **Auto-Startup**: Runs automatically when your PC boots up
+- 📊 **Rainmeter Integration**: Visual voice bar skin shows when the assistant is listening
+- 🎯 **Smart App Launcher**: Opens custom applications (Chrome, Code, Notepad, Calculator, etc.) based on your setup
+- ⚡ **Performance Optimized**: Automatically exits and kills background processes after completing tasks
+- 🔇 **Text-to-Speech Feedback**: Voice feedback using TTS engine to confirm actions
 
-A Rainmeter Voice Bar skin is used to visually indicate microphone activity while the assistant is listening.
+## Requirements
 
-Key Features
+- Python 3.6+
+- Microphone/Audio input device
+- [Rainmeter](https://www.rainmeter.net/) (optional, for voice bar visualization)
+- Internet connection (for Google Speech Recognition API)
 
-Automatic execution on system startup
+## Dependencies
 
-Voice recognition using microphone input
+```
+SpeechRecognition
+pyttsx3
+```
 
-Custom wake phrase detection
+## Installation
 
-Application launching via predefined executable paths
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd Virtual-Assistant
+   ```
 
-Automatic self-termination after task execution
+2. **Install required packages**
+   ```bash
+   pip install SpeechRecognition pyttsx3
+   ```
 
-Automatic Rainmeter shutdown for performance optimization
+3. **Configure paths** (edit `daddy.pyw`)
+   - Update `RAINMETER_PATH` if your Rainmeter installation is in a different location
+   - Update `CHROME_PATH` to your Chrome installation path
+   - Update `PROJECT_FOLDER` to your desired code editor project location
+   - Modify the apps launched to match your preferences
 
-Real-time microphone activity visualization using Rainmeter
+4. **Set up auto-startup**
+   - Edit `daddy.bat` to include the correct path to your Python installation
+   - Add the batch file shortcut to your Windows Startup folder: `C:\Users\<YourUsername>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
 
-Lightweight and resource-efficient design
+## Configuration
 
-Technologies Used
-Programming Language
+### Wake Phrases
+Edit the `WAKE_PHRASES` list in `daddy.pyw` to customize trigger words:
 
-Python 3.x
+```python
+WAKE_PHRASES = [
+    "wake up daddy is home",
+    "wake up daddy",
+    "daddy is home"
+]
+```
 
-Python Libraries
-import speech_recognition as sr
-import os
-import pyttsx3
-import sys
-import time
+### Application Paths
+Modify these variables to launch your preferred applications:
 
-Library Usage
+```python
+RAINMETER_PATH = r"C:\Program Files\Rainmeter\Rainmeter.exe"
+CHROME_PATH = r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
+PROJECT_FOLDER = r"C:\xampp\htdocs\Corona Admin Panel"
+```
 
-speech_recognition – Captures and processes voice commands
+### Audio Settings
+Adjust microphone sensitivity and speech recognition parameters:
 
-pyttsx3 – Text-to-speech functionality
+```python
+recognizer.energy_threshold = 120  # Lower = more sensitive
+engine.setProperty('rate', 170)    # Speech speed
+engine.setProperty('volume', 1.0)  # Volume level
+```
 
-os – Application execution and process handling
+## How It Works
 
-sys – Script control and termination
+1. **Startup**: The application starts with your PC via the batch file
+2. **Listening**: Continuously listens through your microphone for the wake phrase
+3. **Recognition**: When the wake phrase is detected, triggers the action sequence
+4. **Launch**: Opens all configured applications
+5. **Cleanup**: Exits the assistant and terminates Rainmeter to optimize system performance
 
-time – Execution timing and delays
+## Usage
 
-How It Works
+Simply say your configured wake phrase (e.g., "wake up daddy is home") when the application is running.
 
-The system boots up
+**Example workflow:**
+```
+You: "Wake up daddy is home"
+Assistant: "Daddy's home. Launching everything now."
+→ Opens Chrome
+→ Opens VS Code with your project
+→ Opens Notepad
+→ Opens Calculator
+→ Closes Rainmeter
+Assistant: "All done. Going offline."
+→ Application exits
+```
 
-The virtual assistant starts automatically
+## System Requirements
 
-Rainmeter Voice Bar skin launches with microphone access
+- Windows 10/11
+- Python 3.6 or higher
+- Microphone access permissions
+- Administrator rights (for auto-startup feature)
 
-The assistant listens for the configured wake phrase
+## Performance Notes
 
-Upon detection:
+- The application is lightweight and designed to minimize system resource usage
+- It automatically terminates after completing tasks
+- Rainmeter is closed after launching to free up memory
+- Audio processing runs asynchronously to prevent blocking
 
-Authorized applications are launched using their file paths
+## Troubleshooting
 
-After execution:
+**"Microphone not detected"**
+- Check Windows Settings → Privacy → Microphone permissions
+- Ensure your microphone is working in other applications
 
-The Python assistant terminates itself
+**"Wake phrase not recognized"**
+- Speak clearly and naturally
+- Check your internet connection (required for Google Speech Recognition)
+- Adjust `recognizer.energy_threshold` value
+- Verify the wake phrase matches your configuration
 
-Rainmeter is also closed to free system resources
+**"Auto-startup not working"**
+- Check that the batch file is in the Startup folder
+- Verify paths in `daddy.bat` are correct
+- Run as Administrator
 
-Customization
+## License
 
-The project allows customization of:
+This project is open source and available under the MIT License.
 
-Wake phrase
+## Author
 
-Application executable paths
+Created as a personal voice automation assistant.
 
-Startup behavior
+---
 
-Rainmeter skin design and behavior
-
-Only applications explicitly defined by the user can be launched.
-
-Requirements
-
-Windows operating system
-
-Python 3.x installed
-
-Microphone access enabled
-
-Rainmeter installed
-
-Notes
-
-Designed for efficiency and minimal background usage
-
-No unnecessary persistent processes
-
-Suitable for personal automation and voice-controlled system experiments
+**Note**: This application requires active internet connection for Google Speech Recognition API. Keep your microphone clean and positioned correctly for best results.
