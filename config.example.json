@@ -1,0 +1,23 @@
+{
+    "paths": {
+        "rainmeter": "C:\\Program Files\\Rainmeter",
+        "chrome": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+        "project_folder": "C:\\Users\\YourUsername\\Desktop\\Project",
+        "chatgpt_shortcut": "C:\\Users\\YourUsername\\Desktop\\ChatGPT - Shortcut.lnk",
+        "whatsapp_shortcut": "C:\\Users\\YourUsername\\Desktop\\WhatsApp - Shortcut.lnk",
+        "instagram_shortcut": "C:\\Users\\YourUsername\\Desktop\\Instagram - Shortcut.lnk"
+    },
+    "wake_phrases": [
+        "wake up daddy is home",
+        "wake up daddy",
+        "wake up that is home",
+        "daddy is home",
+        "wake up there is home"
+    ],
+    "spotify_song_url": "https://open.spotify.com/track/0vmFuEhyHR8SbOhDFq021Y?si=e57fe30f3e814c72",
+    "speech": {
+        "rate": 170,
+        "volume": 1.0,
+        "energy_threshold": 120
+    }
+}
